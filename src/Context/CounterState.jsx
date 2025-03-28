@@ -17,9 +17,10 @@ const CounterState = (props) => {
     alert('items added successfully')
    }
 
+   
   }
   return (
-    <CounterContext.Provider value={{ cart, Addtocart }}>
+    <CounterContext.Provider value={{ cart, Addtocart ,setCart }}>
             {props.children}
         </CounterContext.Provider>
   )
