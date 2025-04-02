@@ -33,7 +33,7 @@ const Login = () => {
             }
             else{
                   alert('user not found please Signup')
-                  window.location.href="SignUp.html"   
+                 navigate('/sign')  
                 }
     
   }
