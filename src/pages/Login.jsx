@@ -1,8 +1,12 @@
 import React, { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import Typed from 'typed.js';
 
 
 const Login = () => {
+ 
+
+
   let emailRef=useRef();
   let passwordRef=useRef();
   let navigate=useNavigate()
@@ -33,9 +37,26 @@ const Login = () => {
                 }
     
   }
+  const el = React.useRef(null);
+
+  React.useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ['Login', 'Signup','Portfolio'],
+      typeSpeed: 100,
+      backSpeed:50,
+      loop:true
+    });
+
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
+    };
+  }, []);
+
   return (
+
     <div className='flex flex-col justify-center items-center     mt-10' >
-      
+       <span ref={el} />
     <form action='' className='border-black border-2 border-solid flex flex-col p-5 justify-center gap-2 '>
     <label htmlFor=''>Email</label>
     <input  type='email' className='border px-2 py-2 rounded' ref={emailRef}/>
