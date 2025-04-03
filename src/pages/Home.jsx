@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import CounterContext from '../Context/CounterContext'
 
 const Home = () => {
-
+    
     const[allproducts,setallproducts]=useState([])
      async function GetData(ans) {
     let products =await fetch(`https://dummyjson.com/products?limit=0`)

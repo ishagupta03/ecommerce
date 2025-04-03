@@ -1,15 +1,16 @@
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import Typed from 'typed.js';
+import UserContext from '../Context/UserContext';
 
 
 const Login = () => {
  
-
+let userStore=useContext(UserContext)
 
   let emailRef=useRef();
   let passwordRef=useRef();
-  let navigate=useNavigate()
+  // let navigate=useNavigate()
   let arr=JSON.parse(localStorage.getItem('Ecom'))||[]
   const handlelogin=(e)=>{
     e.preventDefault();
@@ -22,8 +23,9 @@ const Login = () => {
    
             if(findarr){
                 if(findarr.password===obj.password){
-                    
-                    navigate('/')
+                  localStorage.setItem('Login',JSON.stringify({email:obj.email, login:true}))
+                  userStore.setuser({email:obj.email, login:true})
+                    // navigate('/')
                 }
                 else{
                     alert('wrong password')
@@ -33,7 +35,7 @@ const Login = () => {
             }
             else{
                   alert('user not found please Signup')
-                 navigate('/sign')  
+                  
                 }
     
   }
@@ -41,7 +43,7 @@ const Login = () => {
 
   React.useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['Login', 'Signup','Portfolio'],
+      strings: ['Login', 'Signup', 'Portfolio'],
       typeSpeed: 100,
       backSpeed:50,
       loop:true

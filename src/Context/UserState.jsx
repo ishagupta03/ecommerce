@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import UserContext from './UserContext';
+
+
 const UserState = (  {children}) => {
+  
 let userData=JSON.parse(localStorage.getItem('Login'))
     const[user,setuser]=useState({
         email:userData?userData.email:'',
